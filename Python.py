@@ -779,17 +779,9 @@ async def spam(e):
 
 async def spam(e):
     if e.sender_id in MK_USERS:
-        aries = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
-        await e.get_reply_message()
-        message = str(aries[1])
-        a = await e.client.get_entity(message)
-        g = a.id
-        c = a.first_name
-        username = f"[{c}](tg://user?id={g})"
         for Msg in OneWord:
-            caption = f"{username} {Msg}"
             async with e.client.action(e.chat_id, "typing"):
-                await e.client.send_message(e.chat_id, caption)
+                await e.client.send_message(e.chat_id, Msg)
                 await asyncio.sleep(0.1)
 
 
